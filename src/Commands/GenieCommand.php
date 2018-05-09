@@ -30,9 +30,10 @@ class GenieCommand extends TerminusCommand implements SiteAwareInterface
   {
     $user = $this->session()->getUser();
 
+
     $this->sites()->fetch(
       [
-        'org_id' => (isset($options['org']) && ($options['org'] !== 'all')) ? $user->getOrganizationMemberships()->get($options['org'])->getOrganization->id : null,
+        'org_id' => (isset($options['org']) && ($options['org'] !== 'all')) ? $user->getOrganizationMemberships()->get($options['org'])->getOrganization()->id : null,
         'team_only' => isset($options['team']) ? $options['team'] : false,
       ]
     );
